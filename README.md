@@ -1,29 +1,101 @@
-# README #
+# DrSQLMD
 
-This README would normally document whatever steps are necessary to get your application up and running.
+**DrSQLMD** is a C# console application that exports a MySQL database schema (tables, views, and stored procedures) into a **Markdown file** formatted for **Obsidian** or any Markdown viewer.
 
-### What is this repository for? ###
+## Features
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+- Generates a **Table of Contents** with nested links to every table, view, and stored procedure  
+- **Alphabetically sorted** for quick navigation  
+- Includes:
+  - Drop statements
+  - Create statements
+  - Initial data insert statements (if available)
+- **Obsidian-friendly links** for seamless navigation
 
-### How do I get set up? ###
+## Requirements
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+- [.NET 6 or later](https://dotnet.microsoft.com/)  
+- [MySQL Server](https://dev.mysql.com/)  
+- `MySql.Data` NuGet package (automatically installed via `dotnet add package`)
 
-### Contribution guidelines ###
+## Installation
 
-* Writing tests
-* Code review
-* Other guidelines
+```bash
+git clone <your-repo-url>
+cd DrSQLMD
+dotnet build
+```
 
-### Who do I talk to? ###
+If you haven't already, install the MySQL connector:
 
-* Repo owner or admin
-* Other community or team contact
+```bash
+dotnet add package MySql.Data
+```
+
+## Usage
+
+You can run **DrSQLMD** in two ways:
+
+### **1. Direct Command-Line Arguments**
+
+```bash
+dotnet run "<connectionString>" <databaseName>
+```
+
+Example (for a local DB with root and no password):
+
+```bash
+dotnet run "Server=localhost;Database=example_database;User ID=root;Password=;Port=3306;SslMode=None;" example_database
+```
+
+### **2. Config File (`config.txt`)**
+
+Create a `config.txt` in the project root with two lines:
+
+```
+Server=localhost;Database=example_database;User ID=root;Password=;Port=3306;SslMode=None;
+example_database
+```
+
+Then run:
+
+```bash
+dotnet run
+```
+
+## Output
+
+The program creates a file:
+
+```
+Database Design.md
+```
+
+This file contains:
+
+- A **TOC** with nested links  
+- Sections for **Tables**, **Views**, and **Stored Procedures**  
+- Each section has:
+  - Drop statement
+  - Create statement
+  - Initial data inserts (if any)
+  - “Back to Table of Contents” links
+
+The file is ready to drop into your **Obsidian vault**.
+
+## Example TOC (Excerpt)
+
+```
+## Table of Contents
+- [[#Tables|Tables]]
+    - [[#Table users|users]]
+    - [[#Table posts|posts]]
+- [[#Views|Views]]
+    - [[#View user_summary|user_summary]]
+- [[#Stored Procedures|Stored Procedures]]
+    - [[#Procedure get_active_users|get_active_users]]
+```
+
+## License
+
+This project is licensed under the **MIT License**. You are free to use, modify, and distribute it as you wish.
