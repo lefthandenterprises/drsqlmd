@@ -1,6 +1,6 @@
-# DrSQLMD
+# Dr. SQL, M.D.
 
-**DrSQLMD** is a C# console application that exports a MySQL database schema (tables, views, and stored procedures) into a **Markdown file** formatted for **Obsidian** or any Markdown viewer.
+**Dr. SQL, M.D. (DrSQLMD)** is a C# console application that exports a MySQL database schema (tables, views, and stored procedures) into a **Markdown file** formatted for **Obsidian** or any Markdown viewer.
 
 ## Features
 
