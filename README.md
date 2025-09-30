@@ -21,7 +21,7 @@
 ## Installation
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/lefthandenterprises/drsqlmd.git
 cd DrSQLMD
 dotnet build
 ```
@@ -34,7 +34,7 @@ dotnet add package MySql.Data
 
 ## Usage
 
-You can run **DrSQLMD** in two ways:
+You can run **Dr. SQL, M.D.** in two ways:
 
 ### **1. Direct Command-Line Arguments**
 
